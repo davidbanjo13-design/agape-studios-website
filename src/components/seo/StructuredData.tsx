@@ -1,5 +1,5 @@
 interface StructuredDataProps {
-  type?: 'organization' | 'localBusiness' | 'service' | 'breadcrumb'
+  type?: 'organization' | 'localBusiness' | 'service' | 'breadcrumb' | 'testimonials'
   data?: Record<string, unknown>
 }
 
@@ -33,7 +33,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type = 'organization', 
           },
           contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+44-20-8311-5555',
+            telephone: '+44-20-8129-5004',
             contactType: 'customer service',
             email: 'info@agapestudios.co.uk',
             availableLanguage: 'English'
@@ -83,7 +83,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type = 'organization', 
           name: 'Agape Studios',
           description: 'Professional 3D virtual tours for properties, businesses, and real estate in London.',
           url: 'https://www.agapestudios.co.uk',
-          telephone: '+44-20-8311-5555',
+          telephone: '+44-20-8129-5004',
           email: 'info@agapestudios.co.uk',
           address: {
             '@type': 'PostalAddress',
@@ -161,6 +161,64 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type = 'organization', 
           ...baseData,
           '@type': 'BreadcrumbList',
           itemListElement: data.items || []
+        }
+
+      case 'testimonials':
+        return {
+          ...baseData,
+          '@type': 'Organization',
+          name: 'Agape Studios',
+          review: [
+            {
+              '@type': 'Review',
+              reviewRating: {
+                '@type': 'Rating',
+                ratingValue: '5',
+                bestRating: '5'
+              },
+              author: {
+                '@type': 'Person',
+                name: 'Estate Agent - Luxury Apartment'
+              },
+              reviewBody: 'The virtual tours helped me sell properties faster and enhance my listings with rich media content.',
+              datePublished: '2024-01-15'
+            },
+            {
+              '@type': 'Review',
+              reviewRating: {
+                '@type': 'Rating',
+                ratingValue: '5',
+                bestRating: '5'
+              },
+              author: {
+                '@type': 'Person',
+                name: 'Venue Manager - Club Supreme'
+              },
+              reviewBody: 'I find it easier to get group bookings once I send the link to my virtual tours to potential customers.',
+              datePublished: '2024-01-20'
+            },
+            {
+              '@type': 'Review',
+              reviewRating: {
+                '@type': 'Rating',
+                ratingValue: '5',
+                bestRating: '5'
+              },
+              author: {
+                '@type': 'Person',
+                name: 'Restaurant Owner - Hitachi Sushi'
+              },
+              reviewBody: 'The 3D tour of my restaurant brought in more customers and increased my bookings significantly.',
+              datePublished: '2024-01-25'
+            }
+          ],
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '3',
+            bestRating: '5'
+          },
+          ...data
         }
 
       default:

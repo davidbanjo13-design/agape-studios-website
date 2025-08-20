@@ -103,8 +103,8 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Contact Info & CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Contact Info & CTA - Hidden on mobile and tablet */}
+          <div className="hidden xl:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-secondary">
               <Phone className="h-4 w-4" />
               <span>020 8129 5004</span>
@@ -117,13 +117,12 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button - Show on mobile and tablet */}
+          <div className="xl:hidden">
             <button
               type="button"
               onClick={handleMenuToggle}
-              onTouchStart={handleMenuToggle}
-              className="inline-flex items-center justify-center p-3 rounded-md text-secondary hover:text-primary hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200 touch-manipulation relative z-50"
+              className="inline-flex items-center justify-center p-3 rounded-md text-secondary hover:text-primary hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200 touch-manipulation relative z-[60]"
               aria-label="Toggle navigation menu"
               aria-expanded={isMenuOpen}
               style={{ 
@@ -147,7 +146,7 @@ const Navigation = () => {
       </div>
 
       {/* Mobile menu overlay */}
-      <div className={`md:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
+      <div className={`xl:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
         isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}>
         <div 
@@ -158,7 +157,7 @@ const Navigation = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden fixed top-16 left-0 right-0 z-50 transform transition-all duration-300 ease-in-out ${
+      <div className={`xl:hidden fixed top-16 left-0 right-0 z-50 transform transition-all duration-300 ease-in-out ${
         isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         <div className="bg-white shadow-2xl border-t border-gray-200 max-h-[calc(100vh-4rem)] overflow-y-auto" style={{ touchAction: 'manipulation' }}>

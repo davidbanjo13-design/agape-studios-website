@@ -245,6 +245,16 @@ nav.header-grey {
     min-height: 48px;
     display: flex;
     align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    user-select: none;
+  }
+
+  /* Improve mobile menu button */
+  @media (max-width: 768px) {
+    button {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }
 

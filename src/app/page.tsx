@@ -1,103 +1,189 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { ArrowRight, Play, Eye, Users, Building } from 'lucide-react'
+import ParallaxSection from '@/components/ui/ParallaxSection'
+import StructuredData from '@/components/seo/StructuredData'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      {/* Hero Section with Parallax */}
+      <ParallaxSection 
+        backgroundImage="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80"
+        speed={0.3}
+        className="min-h-screen text-white"
+        overlayOpacity={0.2}
+      >
+        <div className="max-w-7xl mx-auto section-padding min-h-screen flex items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 opacity-0 animate-fadeInLeft">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Immersive <span className="text-blue-200">3D Virtual Tours</span> for Your Property
+              </h1>
+              <p className="text-xl text-blue-100 leading-relaxed opacity-0 animate-fadeInLeft animation-delay-200">
+                Professional virtual reality experiences that showcase your property like never before. 
+                Perfect for real estate, businesses, and property owners in London.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fadeInLeft animation-delay-400">
+                <Link href="/contact" className="btn-primary bg-white text-primary hover:bg-blue-50 inline-flex items-center justify-center transform hover:scale-105 transition-all duration-300">
+                  Book Your Tour <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link href="/portfolio" className="btn-secondary bg-transparent border-white text-white hover:bg-white hover:text-primary inline-flex items-center justify-center transform hover:scale-105 transition-all duration-300">
+                  <Play className="mr-2 h-5 w-5" />
+                  View Portfolio
+                </Link>
+              </div>
+            </div>
+            <div className="lg:justify-self-end opacity-0 animate-fadeInRight animation-delay-200">
+              <div className="glass-effect rounded-2xl p-8">
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="bg-white/20 p-3 rounded-full">
+                      <Eye className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">360° Virtual Reality</h3>
+                      <p className="text-blue-100 text-sm">Immersive experiences</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="bg-white/20 p-3 rounded-full">
+                      <Building className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">All Property Types</h3>
+                      <p className="text-blue-100 text-sm">Residential & Commercial</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="bg-white/20 p-3 rounded-full">
+                      <Users className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Professional Service</h3>
+                      <p className="text-blue-100 text-sm">Expert team in London</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </ParallaxSection>
+
+      {/* Why Choose Agape Studios - Split Section with Parallax */}
+      <section className="min-h-screen flex items-center">
+        <div className="w-full grid lg:grid-cols-2">
+          {/* Parallax Image Side */}
+          <div className="min-h-[50vh] lg:min-h-screen relative overflow-hidden">
+            <ParallaxSection 
+              backgroundImage="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              speed={0.3}
+              className="h-full"
+              overlayOpacity={0}
+            >
+              <div></div>
+            </ParallaxSection>
+          </div>
+
+          {/* Content Side */}
+          <div className="min-h-[50vh] lg:min-h-screen bg-primary flex items-center section-padding">
+            <div className="w-full">
+              <div className="mb-12 opacity-0 animate-fadeInUp">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 drop-shadow-lg" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                  Why Choose Agape Studios?
+                </h2>
+                <p className="text-xl text-white mb-8 drop-shadow-md" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
+                  We create stunning 3D virtual tours that help you showcase properties, 
+                  attract more clients, and close deals faster.
+                </p>
+              </div>
+              
+              <div className="space-y-8">
+                <div className="flex items-start space-x-4 opacity-0 animate-fadeInUp animation-delay-200">
+                  <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Building className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.7)'}}>Real Estate</h3>
+                    <p className="text-white drop-shadow-sm" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)'}}>
+                      Showcase properties with immersive virtual tours that let potential buyers 
+                      explore every detail from anywhere in the world.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 opacity-0 animate-fadeInUp animation-delay-400">
+                  <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.7)'}}>Business Spaces</h3>
+                    <p className="text-white drop-shadow-sm" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)'}}>
+                      Give customers a virtual walkthrough of your business, restaurant, 
+                      or retail space to drive foot traffic and bookings.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 opacity-0 animate-fadeInUp animation-delay-600">
+                  <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Eye className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.7)'}}>Property Management</h3>
+                    <p className="text-white drop-shadow-sm" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)'}}>
+                      Create virtual property listings that save time on viewings and 
+                      attract serious, qualified tenants and buyers.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-6 opacity-0 animate-fadeInUp animation-delay-800">
+                  <a 
+                    href="/portfolio" 
+                    className="btn-primary inline-flex items-center"
+                  >
+                    View Our Work
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section with Static Background */}
+      <section 
+        className="section-padding text-white relative bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=85')"
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/70"></div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fadeInUp">
+            Ready to Transform Your Property Marketing?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 opacity-0 animate-fadeInUp animation-delay-200">
+            Get started with a professional 3D virtual tour today. 
+            Contact us for a free consultation and quote.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fadeInUp animation-delay-400">
+            <Link href="/contact" className="btn-primary bg-white text-primary hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-white/20">
+              Get Free Quote
+            </Link>
+            <Link href="/portfolio" className="btn-secondary bg-transparent border-white text-white hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300">
+              View Our Work
+            </Link>
+          </div>
+        </div>
+      </section>
+      
+      {/* Structured Data for Homepage */}
+      <StructuredData type="service" />
     </div>
-  );
+  )
 }

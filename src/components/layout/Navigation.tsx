@@ -30,25 +30,12 @@ const Navigation = () => {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${window.scrollY}px`
-      document.body.style.width = '100%'
     } else {
-      const scrollY = document.body.style.top
       document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1)
-      }
     }
     
     return () => {
       document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
     }
   }, [isMenuOpen])
 
@@ -60,7 +47,10 @@ const Navigation = () => {
     { href: '/contact', label: 'Contact' },
   ]
 
-  const handleMenuToggle = () => {
+  const handleMenuToggle = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log('Menu toggle clicked! Current state:', isMenuOpen)
     setIsMenuOpen(!isMenuOpen)
   }
 
@@ -132,18 +122,24 @@ const Navigation = () => {
             <button
               type="button"
               onClick={handleMenuToggle}
+              onTouchStart={handleMenuToggle}
               className="inline-flex items-center justify-center p-3 rounded-md text-secondary hover:text-primary hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200 touch-manipulation relative z-50"
               aria-label="Toggle navigation menu"
               aria-expanded={isMenuOpen}
-              style={{ minHeight: '44px', minWidth: '44px' }}
+              style={{ 
+                minHeight: '48px', 
+                minWidth: '48px',
+                WebkitTapHighlightColor: 'rgba(0,0,0,0.1)',
+                touchAction: 'manipulation',
+                userSelect: 'none'
+              }}
             >
               <div className="relative w-6 h-6">
-                <Menu className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0 rotate-45' : 'opacity-100 rotate-0'
-                }`} />
-                <X className={`absolute inset-0 h-6 w-6 transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-45'
-                }`} />
+                {isMenuOpen ? (
+                  <X className="h-6 w-6 text-current" />
+                ) : (
+                  <Menu className="h-6 w-6 text-current" />
+                )}
               </div>
             </button>
           </div>

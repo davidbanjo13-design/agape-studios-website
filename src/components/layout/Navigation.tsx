@@ -56,12 +56,10 @@ const Navigation = () => {
     { href: '/', label: 'Home' },
     { href: '/portfolio', label: 'Portfolio' },
     { href: '/how-it-works', label: 'How It Works' },
-    { href: '/testimonials', label: 'Testimonials' },
     { href: '/contact', label: 'Contact' },
   ]
 
   const handleMenuToggle = () => {
-    console.log('Menu toggle clicked, current state:', isMenuOpen)
     setIsMenuOpen(!isMenuOpen)
   }
 
@@ -133,7 +131,6 @@ const Navigation = () => {
             <button
               type="button"
               onClick={handleMenuToggle}
-              onTouchStart={(e) => e.preventDefault()}
               className="inline-flex items-center justify-center p-3 rounded-md text-secondary hover:text-primary hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-200 touch-manipulation relative z-50"
               aria-label="Toggle navigation menu"
               aria-expanded={isMenuOpen}
